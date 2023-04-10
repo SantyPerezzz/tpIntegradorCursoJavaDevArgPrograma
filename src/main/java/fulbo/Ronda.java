@@ -34,9 +34,4 @@ public class Ronda {
 		this.partidos = partidos;
 	}
 	
-	// Completar metodo puntos()
-	public int puntos() {
-		// TODO por completar
-		return 0;
-	}
 }
