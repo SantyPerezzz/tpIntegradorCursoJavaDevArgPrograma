@@ -1,6 +1,9 @@
 package fulbo;
 
 public class Partido {
+	
+	enum Resultado{gano,perdio,empato}
+	
 	private Equipo equipo1;
 	private Equipo equipo2;
 	private int golesEquipo1;
@@ -53,23 +56,23 @@ public class Partido {
 	}
 	
 	// Completar metodo resultado(Equipo)
-	public ResultadoEnum resultado(Equipo equipo) {
-		ResultadoEnum res= new ResultadoEnum();
+	public Resultado resultado(Equipo equipo) {
+		Resultado res=null;
 		if(equipo==equipo1) {
 			if(golesEquipo1>golesEquipo2) {
-				res.setResultado('g');
+				res= Resultado.gano;
 			}else if(golesEquipo1==golesEquipo2) {
-				res.setResultado('e');
+				res= Resultado.empato;
 			}else {
-				res.setResultado('p');
+				res= Resultado.perdio;
 			}
 		}else if(equipo==equipo2) {
 			if(golesEquipo1<golesEquipo2) {
-				res.setResultado('g');
+				res= Resultado.gano;
 			}else if(golesEquipo1==golesEquipo2) {
-				res.setResultado('e');
+				res= Resultado.empato;
 			}else {
-				res.setResultado('p');
+				res= Resultado.perdio;
 			}
 		}
 		return res;
