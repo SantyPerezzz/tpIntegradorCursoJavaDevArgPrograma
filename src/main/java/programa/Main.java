@@ -2,12 +2,9 @@ package programa;
 
 import fulbo.*;
 
-import TP_Integrador.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-import javax.swing.plaf.basic.BasicBorders.SplitPaneBorder;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class Main {
         Equipo river = new Equipo("River Plate", "Club Atletico River Plate");
         Equipo boca = new Equipo("Boca Juniors", "Club Atletico Boca Juniors");
         Partido boca_river = new Partido(river, boca, 12, 12);
-        ResultadoEnum resultado = new ResultadoEnum();
+        Partido.Resultado resultado = null;
         Pronostico pronosticoBocaRiver = new Pronostico(boca_river, river, resultado);
     }
 }

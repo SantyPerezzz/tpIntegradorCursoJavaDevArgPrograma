@@ -2,7 +2,7 @@ package fulbo;
 
 public class Partido {
 	
-	enum Resultado{gano,perdio,empato}
+	public enum Resultado{gano,perdio,empato}
 	
 	private Equipo equipo1;
 	private Equipo equipo2;
