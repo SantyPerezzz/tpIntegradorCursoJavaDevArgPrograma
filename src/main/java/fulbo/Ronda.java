@@ -1,15 +1,15 @@
 package fulbo;
+
 import java.util.List;
 import java.util.ArrayList;
-
 
 public class Ronda {
 	private String nro;
 	private List<Partido> partidos;
-	
+
 	public Ronda() {
-		this.nro="";
-		this.partidos= new ArrayList<>();
+		this.nro = "";
+		this.partidos = new ArrayList<>();
 	}
 
 	public Ronda(String nro, List<Partido> partidos) {
@@ -33,5 +33,5 @@ public class Ronda {
 	public void setPartidos(List<Partido> partidos) {
 		this.partidos = partidos;
 	}
-	
+
 }
