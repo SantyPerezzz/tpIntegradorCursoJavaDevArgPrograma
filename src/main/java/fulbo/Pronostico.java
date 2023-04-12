@@ -1,17 +1,19 @@
 package fulbo;
 
+import fulbo.Partido.Resultado;
+
 public class Pronostico {
 	private Partido partido;
 	private Equipo equipo;
-	private ResultadoEnum resultado;
+	private Resultado resultado;
 	
 	public Pronostico() {
 		this.partido= new Partido();
 		this.equipo= new Equipo();
-		this.resultado= new ResultadoEnum();
+		this.resultado= null;
 	}
 
-	public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
+	public Pronostico(Partido partido, Equipo equipo, Resultado resultado) {
 		super();
 		this.partido = partido;
 		this.equipo = equipo;
@@ -34,11 +36,11 @@ public class Pronostico {
 		this.equipo = equipo;
 	}
 
-	public ResultadoEnum getResultado() {
+	public Resultado getResultado() {
 		return resultado;
 	}
 
-	public void setResultado(ResultadoEnum resultado) {
+	public void setResultado(Resultado resultado) {
 		this.resultado = resultado;
 	}
 	
