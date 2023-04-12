@@ -5,22 +5,26 @@ import fulbo.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Path fPath = Path.of("C:\\Users\\Fer\\eclipse-workspace\\Java_curso\\src\\fulbo\\resultados.txt");
+        Path resultadosPath= Path.of("resultados");
+//        Path pronosticoPath= Path.of(args[1]);
+        
+        ArrayList<Partido> partidos= new ArrayList<Partido>();
+        
         try {
-            for (String num : Files.readAllLines(fPath)) {
-                System.out.println(num.split(",")[1]);
+            for (String linea : Files.readAllLines(resultadosPath)) {
+            	Equipo aux1= new Equipo(linea.split(",")[0],"");
+            	Equipo aux2= new Equipo(linea.split(",")[3],"");
+            	
+            	partidos.add(new Partido(aux1,aux2,Integer.parseInt(linea.split(",")[1]),Integer.parseInt(linea.split(",")[2])));
             }
 
         } catch (IOException e) {
             System.err.println(e);
         }
-        Equipo river = new Equipo("River Plate", "Club Atletico River Plate");
-        Equipo boca = new Equipo("Boca Juniors", "Club Atletico Boca Juniors");
-        Partido boca_river = new Partido(river, boca, 12, 12);
-        Partido.Resultado resultado = null;
-        Pronostico pronosticoBocaRiver = new Pronostico(boca_river, river, resultado);
+   
     }
 }
