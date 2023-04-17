@@ -91,6 +91,15 @@ public class Main {
         for(Pronostico p:pronosticos) {
         	System.out.println(p.getEquipo().getNombre());
         }
+        System.out.println("imprimo equipos de lista partidos");
+        for(Partido p:partidos) {
+        	System.out.println(p.getEquipo1().getNombre());
+        	System.out.println(p.getEquipo2().getNombre());
+        }
+        System.out.println("imprimo equipos de lista equipos");
+        for(Equipo t:equipos) {
+        	System.out.println(t.getNombre());
+        }
         
         /* try {
             for (String linea : Files.readAllLines(pronosticoPath)) {

@@ -1,2 +1,2 @@
-Argentina,x, , ,Arabia Saudita
-Polonia, ,x, ,Mexico
+Argentina,X, , ,Arabia Saudita
+Polonia, ,X, ,Mexico
