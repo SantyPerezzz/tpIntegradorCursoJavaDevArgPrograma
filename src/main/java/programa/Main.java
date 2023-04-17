@@ -1,6 +1,7 @@
 package programa;
 
 import fulbo.*;
+import fulbo.Partido.Resultado;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -30,6 +31,17 @@ public class Main {
 		
 		return pos;
 	}
+	
+	public static Resultado resEquipo1(String linea[]) {
+		Resultado res=Resultado.perdio;
+		if(linea[1]=="X") {
+			res= Resultado.gano;
+		}else if(linea[2]=="X") {
+			res= Resultado.empato;
+		}
+		
+		return res;
+	}
 
     public static void main(String[] args) {
         Path resultadosPath = Path.of("D:\\ProgramFilesx86\\workspace\\tpIntegradorFtFer\\src\\main\\java\\programa\\resultados");
@@ -58,16 +70,27 @@ public class Main {
                 
                 partidos.add(new Partido(aux1, aux2, Integer.parseInt(linea.split(",")[1]),Integer.parseInt(linea.split(",")[2])));
             }
-            /*for(String linea: Files.readAllLines(pronosticoPath)) {
-            	Equipo auxEq1= 
-            	Partido aux=buscarPartido(partidos, );
-            	Pronostico aux1= new Pronostico();
-            }*/
+            for(String linea: Files.readAllLines(pronosticoPath)) {
+            	String nomEq1= linea.split(",")[0];
+            	String nomEq2= linea.split(",")[4];
+            	Equipo eqAux1= equipos.get(posEquipo(equipos, nomEq1));
+            	Equipo eqAux2= equipos.get(posEquipo(equipos,nomEq2));
+            	
+            	Pronostico aux = new Pronostico(buscarPartido(partidos,eqAux1,eqAux2),eqAux1,resEquipo1(linea.split(",")));
+            	
+            	pronosticos.add(aux);
+            	
+            	System.out.println(eqAux1.getNombre());
+            	System.out.println(eqAux2.getNombre());
+            }
  
         } catch (IOException e) {
             System.err.println(e);
         }
         
+        for(Pronostico p:pronosticos) {
+        	System.out.println(p.getEquipo().getNombre());
+        }
         
         /* try {
             for (String linea : Files.readAllLines(pronosticoPath)) {
