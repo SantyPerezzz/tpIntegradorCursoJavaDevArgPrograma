@@ -24,7 +24,8 @@ public class Main {
 	public static int posEquipo(ArrayList<Equipo> equipos,String nombre) {
 		int pos=-1;
 		for(Equipo eq:equipos) {
-			if(eq.getNombre()==nombre) {
+			
+			if(eq.getNombre().equals(nombre)) {
 				pos=equipos.indexOf(eq);
 			}
 		}
@@ -73,50 +74,29 @@ public class Main {
             for(String linea: Files.readAllLines(pronosticoPath)) {
             	String nomEq1= linea.split(",")[0];
             	String nomEq2= linea.split(",")[4];
-            	Equipo eqAux1= equipos.get(posEquipo(equipos, nomEq1));
-            	Equipo eqAux2= equipos.get(posEquipo(equipos,nomEq2));
+            	Equipo eqAux1= new Equipo();
+            	Equipo eqAux2=new Equipo();
+            	
+            	if(posEquipo(equipos,nomEq1)!=-1) {
+            		eqAux1= equipos.get(posEquipo(equipos, nomEq1));	
+            	}
+            	if(posEquipo(equipos,nomEq2)!=-1) {
+            		eqAux2= equipos.get(posEquipo(equipos,nomEq2));
+            	}
             	
             	Pronostico aux = new Pronostico(buscarPartido(partidos,eqAux1,eqAux2),eqAux1,resEquipo1(linea.split(",")));
             	
             	pronosticos.add(aux);
-            	
-            	System.out.println(eqAux1.getNombre());
-            	System.out.println(eqAux2.getNombre());
             }
- 
         } catch (IOException e) {
             System.err.println(e);
         }
+        int contPuntos=0;
+        for(Pronostico p: pronosticos) {
+        	contPuntos+=p.puntos();
+        }
+        System.out.println("Puntaje= "+contPuntos);
         
-        for(Pronostico p:pronosticos) {
-        	System.out.println(p.getEquipo().getNombre());
-        }
-        System.out.println("imprimo equipos de lista partidos");
-        for(Partido p:partidos) {
-        	System.out.println(p.getEquipo1().getNombre());
-        	System.out.println(p.getEquipo2().getNombre());
-        }
-        System.out.println("imprimo equipos de lista equipos");
-        for(Equipo t:equipos) {
-        	System.out.println(t.getNombre());
-        }
-        
-        /* try {
-            for (String linea : Files.readAllLines(pronosticoPath)) {
-                Equipo aux1 = new Equipo(linea.split(",")[0], "");
-                if (linea.split(",")[1] == "x") {
-                    pronosticos.add(new Pronostico(partidos.getPartido(), aux1, Partido.Resultado.gano));
-                }
-                if (linea.split(",")[2] == "x") {
-                    pronosticos.add(new Pronostico(partidos, aux1, Partido.Resultado.empato));
-                }
-                if (linea.split(",")[3] == "x") {
-                    pronosticos.add(new Pronostico(partidos, aux1, Partido.Resultado.perdio));
-                }
-            }
-
-        } catch (IOException e) {
-            System.err.println(e);
-        }*/
+       
     }
 }
